@@ -1,62 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prosta Ciemna Strona</title>
-    <style>
-        body {
-            background-color: #121212; /* Głęboka, matowa czerń */
-            color: #e0e0e0;            /* Delikatna biel, niemęcząca oczu */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            text-align: center;
-            background-color: #1e1e1e; /* Nieco jaśniejszy kontener (karta) */
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-        }
-        h1 {
-            color: #ffffff;
-            margin-bottom: 16px;
-        }
-        p {
-            line-height: 1.6;
-            color: #a0a0a0;
-        }
-        .btn {
-            display: inline-block;
-            margin-top: 24px;
-            padding: 12px 24px;
-            background-color: #3b82f6; /* Kontrastowy akcent (niebieski) */
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-        .btn:hover {
-            background-color: #2563eb;
-        }
-    </style>
-</head>
-<body>
-</body>
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ciemna Strona z Menu</title>
+    <title>Ciemny Szablon - Menu i Tabela</title>
     <style>
         /* Reset podstawowych styli */
         * {
@@ -66,17 +13,17 @@
         }
 
         body {
-            background-color: #121212; /* Ciemne tło */
-            color: #e0e0e0;            /* Jasny tekst niemęczący oczu */
+            background-color: #121212; /* Ciemne tło strony */
+            color: #e0e0e0;            /* Jasny tekst */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            padding-top: 60px;
         }
-        /* Górne Menu (Navbar) */
+
+        /* GÓRNE MENU (NAVBAR) */
         .navbar {
-            position: fixed;
+            position: sticky;
             top: 0;
-            background-color: #1e1e1e; /* Nieco jaśniejsze tło dla odcięcia menu */
+            background-color: #1e1e1e; /* Kontrastowe, ciemne tło menu */
             border-bottom: 1px solid #2d2d2d;
             padding: 15px 30px;
             display: flex;
@@ -111,50 +58,66 @@
             color: #3b82f6; /* Niebieski akcent */
         }
 
-        /* Główny kontener strony */
-        .main-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 74px); /* Wysokość ekranu minus wysokość menu */
-            padding: 40px 20px;
+        /* GŁÓWNY KONTENER POD MENU */
+        .content-container {
+            max-width: 1000px;
+            margin: 40px auto; /* Margines u góry i na dole, centrowanie w poziomie */
+            padding: 0 20px;
         }
 
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            text-align: center;
-            background-color: #1e1e1e; /* Kontener karty */
-            border-radius: 12px;
+        .page-title {
+            color: #ffffff;
+            margin-bottom: 24px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        /* RESPONSYWNY KONTENER DLA TABELI */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto; /* Przewijanie w bok na małych telefonach */
+            background-color: #1e1e1e;
+            border-radius: 8px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
         }
 
-        h1 {
+        /* STYLIZACJA TABELI */
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Usunięcie podwójnych ramek */
+            text-align: left;
+        }
+
+        /* Styl nagłówków */
+        th {
+            background-color: #3b82f6; /* Niebieskie tło nagłówka */
             color: #ffffff;
-            margin-bottom: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            padding: 16px 20px;
         }
 
-        p {
-            color: #a0a0a0;
-            margin-bottom: 24px;
+        /* Styl komórek (wierszy danych) */
+        td {
+            padding: 16px 20px;
+            border-bottom: 1px solid #2d2d2d;
+            font-size: 15px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #3b82f6;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background 0.3s ease;
+        /* Efekt podświetlenia wiersza po najechaniu */
+        tbody tr:hover {
+            background-color: #252525;
+            transition: background-color 0.2s ease;
         }
 
-        .btn:hover {
-            background-color: #2563eb;
+        /* Usunięcie dolnej kreski w ostatnim wierszu */
+        tbody tr:last-child td {
+            border-bottom: none;
         }
 
-        /* Dostosowanie do urządzeń mobilnych */
+        /* DOSTOSOWANIE DO EKRANÓW MOBILNYCH */
         @media (max-width: 600px) {
             .navbar {
                 flex-direction: column;
@@ -164,19 +127,75 @@
             .navbar .nav-links {
                 gap: 15px;
             }
+            .content-container {
+                margin: 20px auto;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- NOWE MENU NA SAEJ GÓRZE -->
+    <!-- GÓRNE MENU -->
     <nav class="navbar">
+        <a href="#" class="logo">PanelProjektu</a>
         <ul class="nav-links">
-            <li><a href="#start">Instrukcja</a></li>
-            <li><a href="#o-nas">Opis Tabeli</a></li>
-            <li><a href="#uslugi">Logowanie</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="#glowna">Strona Główna</a></li>
+            <li><a href="#projekty">Projekty</a></li>
+            <li><a href="#statystyki">Statystyki</a></li>
+            <li><a href="#ustawienia">Ustawienia</a></li>
         </ul>
     </nav>
+
+    <!-- ZAWARTOŚĆ STRONY POD MENU -->
+    <main class="content-container">
+        
+        <h1 class="page-title">Podsumowanie Zgłoszeń</h1>
+
+        <!-- Kontener tabeli -->
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nazwa zadania</th>
+                        <th>Status</th>
+                        <th>Ostatnia zmiana</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Wiersz 1 -->
+                    <tr>
+                        <td>#101</td>
+                        <td>Aktualizacja bazy danych</td>
+                        <td style="color: #10b981; font-weight: bold;">Zakończono</td>
+                        <td>Dzisiaj, 14:20</td>
+                    </tr>
+                    <!-- Wiersz 2 -->
+                    <tr>
+                        <td>#102</td>
+                        <td>Projekt interfejsu UI</td>
+                        <td style="color: #3b82f6; font-weight: bold;">W trakcie</td>
+                        <td>Wczoraj, 18:05</td>
+                    </tr>
+                    <!-- Wiersz 3 -->
+                    <tr>
+                        <td>#103</td>
+                        <td>Testy bezpieczeństwa API</td>
+                        <td style="color: #f59e0b; font-weight: bold;">Oczekuje</td>
+                        <td>19.10.2026</td>
+                    </tr>
+                    <!-- Wiersz 4 -->
+                    <tr>
+                        <td>#104</td>
+                        <td>Naprawa błędu z logowaniem</td>
+                        <td style="color: #ef4444; font-weight: bold;">Wstrzymano</td>
+                        <td>15.10.2026</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
 
 </body>
 </html>

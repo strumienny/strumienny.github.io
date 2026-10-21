@@ -13,7 +13,7 @@
         }
 
         body {
-            /* ZMIANA: Dodano bordowe ozdobienie tła w postaci klimatycznej poświaty */
+            /* Bordowe ozdobienie tła w postaci klimatycznej poświaty */
             background-color: #121212; 
             background-image: radial-gradient(circle at center, #4a0e17 0%, #121212 70%);
             background-attachment: fixed;
@@ -76,6 +76,7 @@
             font-size: 28px;
             font-weight: 600;
             text-align: center;
+            white-space: pre-line; /* Pozwala na łamanie linii w nagłówku za pomocą \n lub entera */
         }
 
         /* RESPONSYWNE KONTENERY DLA TABEL */
@@ -121,7 +122,7 @@
             transition: background-color 0.2s ease;
         }
 
-        /* ZMIANA: Słowo LICYTACJA na środku */
+        /* Słowo LICYTACJA na środku */
         .row-centered {
             text-align: center;
             font-weight: bold;
@@ -132,7 +133,7 @@
         }
 
         /* PRECYZYJNE SZEROKOŚCI KOLUMN DLA DRUGIEJ TABELI */
-        .col-gracz {
+        .col-uzytkownik {
             width: 50%; 
         }
         .col-kwota {
@@ -169,7 +170,7 @@
         <ul class="nav-links">
             <li><a href="#licytacje">Licytacje</a></li>
             <li><a href="#opis">Opis Tabeli</a></li>
-            <li><a href="#jak-grac">Jak Grać</a></li>
+            <li><a href="#instrukcja">Instrukcja</a></li>
             <li><a href="#logowanie">Logowanie</a></li>
         </ul>
     </nav>
@@ -177,7 +178,7 @@
     <!-- ZENTROWANA ZAWARTOŚĆ STRONY -->
     <main class="main-container">
         
-        <!-- ZMIANA: Pierwsza tabela ma teraz dwie kolumny z wyśrodkowanymi wpisami -->
+        <!-- Pierwsza tabela (dwie kolumny z wyśrodkowanymi wpisami) -->
         <div class="table-responsive table-sellers" style="max-width: 500px;">
             <table>
                 <tbody>
@@ -197,19 +198,20 @@
             </table>
         </div>
 
-        <!-- NAGŁÓWEK GŁÓWNY -->
-        <h1 class="page-title">Czas Do Końca Aukcji</h1>
+        <!-- ZMIANA: Nagłówek główny ze zmienioną treścią i formatowaniem -->
+        <h1 class="page-title">KONIEC AUKCJI :
+-- : --</h1>
 
         <!-- GŁÓWNA TABELA -->
         <div class="table-responsive">
             <table>
                 <thead>
-                    <!-- ZMIANA: Nagłówek AUKCJA zmieniony na LICYTACJA -->
                     <tr>
                         <th colspan="3" class="row-centered">LICYTACJA</th>
                     </tr>
                     <tr>
-                        <th class="col-gracz">Gracz</th>
+                        <!-- ZMIANA: Nagłówek "Gracz" zmieniony na "Użytkownik" -->
+                        <th class="col-uzytkownik">Użytkownik</th>
                         <th class="col-kwota">Kwota</th>
                         <th class="col-nr-akcji">Nr. Akcji</th>
                     </tr>

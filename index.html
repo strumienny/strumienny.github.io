@@ -40,6 +40,7 @@
             font-weight: bold;
             color: #ffffff;
             letter-spacing: 0.5px;
+            text-transform: uppercase; /* Wymuszenie wielkich liter dla spójności */
         }
 
         .navbar .nav-links {
@@ -173,16 +174,16 @@
 
     <!-- GÓRNE MENU -->
     <nav class="navbar">
-        <div class="menu-title">LICYTACJA AKCJI</div>
+        <!-- ZMIANA: id="main-menu-title" do dynamicznej podmiany tekstu w JavaScript -->
+        <div class="menu-title" id="main-menu-title">LICYTACJA AKCJI</div>
         <ul class="nav-links">
-            <!-- ZMIANA: Licytacje są teraz jako pierwsze, a Instrukcja jako druga -->
             <li><a onclick="showTab('licytacje')" id="link-licytacje" class="active">Licytacje</a></li>
             <li><a onclick="showTab('instrukcja')" id="link-instrukcja">Instrukcja</a></li>
             <li><a onclick="showTab('logowanie')" id="link-logowanie">Logowanie</a></li>
         </ul>
     </nav>
 
-    <!-- ZAKŁADKA 1: LICYTACJE (TUTAJ SĄ TABELE - DOMYŚLNIE AKTYWNA) -->
+    <!-- ZAKŁADKA 1: LICYTACJE -->
     <main id="tab-licytacje" class="tab-content active">
         
         <!-- Pierwsza tabela -->
@@ -259,14 +260,14 @@
         <!-- Czysta strona -->
     </main>
 
-    <!-- SKRYPT DO OBSŁUGI PRZEŁĄCZANIA ZAKŁADEK -->
+    <!-- SKRYPT DO OBSŁUGI PRZEŁĄCZANIA ZAKŁADEK I ZMIANY TYTUŁU -->
     <script>
         function showTab(tabId) {
             // 1. Ukryj całą zawartość wszystkich zakładek
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // 2. Usuń podświetlenie (klasę active) ze wszystkich linków w menu
+            // 2. Usuń podświetlenie ze wszystkich linków w menu
             const links = document.querySelectorAll('.nav-links a');
             links.forEach(link => link.classList.remove('active'));
 
@@ -275,6 +276,16 @@
 
             // 4. Podświetl kliknięty element menu
             document.getElementById('link-' + tabId).classList.add('active');
+
+            // ZMIANA: Dynamiczna podmiana tekstu po lewej stronie panelu menu
+            const menuTitle = document.getElementById('main-menu-title');
+            if (tabId === 'licytacje') {
+                menuTitle.innerText = 'LICYTACJA AKCJI';
+            } else if (tabId === 'instrukcja') {
+                menuTitle.innerText = 'INSTRUKCJA';
+            } else if (tabId === 'logowanie') {
+                menuTitle.innerText = 'LOGOWANIE';
+            }
         }
     </script>
 

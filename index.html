@@ -151,13 +151,6 @@
             white-space: nowrap; 
         }
 
-        /* KLASA DLA CZYSTEJ STRONY */
-        .blank-page {
-            color: #666;
-            font-size: 18px;
-            font-style: italic;
-        }
-
         /* DOSTOSOWANIE DO EKRANÓW MOBILNYCH */
         @media (max-width: 600px) {
             .navbar {
@@ -182,18 +175,14 @@
     <nav class="navbar">
         <div class="menu-title">LICYTACJA AKCJI</div>
         <ul class="nav-links">
-            <li><a onclick="showTab('instrukcja')" id="link-instrukcja">Instrukcja</a></li>
+            <!-- ZMIANA: Licytacje są teraz jako pierwsze, a Instrukcja jako druga -->
             <li><a onclick="showTab('licytacje')" id="link-licytacje" class="active">Licytacje</a></li>
+            <li><a onclick="showTab('instrukcja')" id="link-instrukcja">Instrukcja</a></li>
             <li><a onclick="showTab('logowanie')" id="link-logowanie">Logowanie</a></li>
         </ul>
     </nav>
 
-    <!-- ZAKŁADKA 1: INSTRUKCJA (CZYSTA STRONA) -->
-    <main id="tab-instrukcja" class="tab-content">
-        <div class="blank-page"><!-- Tutaj jest zupełnie czysto --></div>
-    </main>
-
-    <!-- ZAKŁADKA 2: LICYTACJE (TUTAJ SĄ TABELE) -->
+    <!-- ZAKŁADKA 1: LICYTACJE (TUTAJ SĄ TABELE - DOMYŚLNIE AKTYWNA) -->
     <main id="tab-licytacje" class="tab-content active">
         
         <!-- Pierwsza tabela -->
@@ -260,9 +249,14 @@
 
     </main>
 
+    <!-- ZAKŁADKA 2: INSTRUKCJA (CZYSTA STRONA) -->
+    <main id="tab-instrukcja" class="tab-content">
+        <!-- Czysta strona -->
+    </main>
+
     <!-- ZAKŁADKA 3: LOGOWANIE (CZYSTA STRONA) -->
     <main id="tab-logowanie" class="tab-content">
-        <div class="blank-page"><!-- Tutaj również jest zupełnie czysto --></div>
+        <!-- Czysta strona -->
     </main>
 
     <!-- SKRYPT DO OBSŁUGI PRZEŁĄCZANIA ZAKŁADEK -->

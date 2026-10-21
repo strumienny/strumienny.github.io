@@ -40,7 +40,7 @@
             font-weight: bold;
             color: #ffffff;
             letter-spacing: 0.5px;
-            text-transform: uppercase; /* Wymuszenie wielkich liter dla spójności */
+            text-transform: uppercase;
         }
 
         .navbar .nav-links {
@@ -174,17 +174,17 @@
 
     <!-- GÓRNE MENU -->
     <nav class="navbar">
-        <!-- ZMIANA: id="main-menu-title" do dynamicznej podmiany tekstu w JavaScript -->
         <div class="menu-title" id="main-menu-title">LICYTACJA AKCJI</div>
         <ul class="nav-links">
-            <li><a onclick="showTab('licytacje')" id="link-licytacje" class="active">Licytacje</a></li>
-            <li><a onclick="showTab('instrukcja')" id="link-instrukcja">Instrukcja</a></li>
-            <li><a onclick="showTab('logowanie')" id="link-logowanie">Logowanie</a></li>
+            <!-- ZMIANA: Każdy link kieruje teraz do odnośnika typu href="#nazwa" i wymusza przeładowanie -->
+            <li><a href="#licytacje" onclick="navigateToTab('licytacje')" id="link-licytacje">Licytacje</a></li>
+            <li><a href="#instrukcja" onclick="navigateToTab('instrukcja')" id="link-instrukcja">Instrukcja</a></li>
+            <li><a href="#logowanie" onclick="navigateToTab('logowanie')" id="link-logowanie">Logowanie</a></li>
         </ul>
     </nav>
 
     <!-- ZAKŁADKA 1: LICYTACJE -->
-    <main id="tab-licytacje" class="tab-content active">
+    <main id="tab-licytacje" class="tab-content">
         
         <!-- Pierwsza tabela -->
         <div class="table-responsive table-sellers" style="max-width: 500px;">
@@ -260,33 +260,43 @@
         <!-- Czysta strona -->
     </main>
 
-    <!-- SKRYPT DO OBSŁUGI PRZEŁĄCZANIA ZAKŁADEK I ZMIANY TYTUŁU -->
+    <!-- JAVASCRIPT: OBSŁUGA ODŚWIEŻANIA I ZAPAMIĘTYWANIA STANÓW -->
     <script>
-        function showTab(tabId) {
-            // 1. Ukryj całą zawartość wszystkich zakładek
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
+        // Funkcja wywoływana w momencie kliknięcia (zmienia adres URL i odświeża stronę)
+        function navigateToTab(tabId) {
+            window.location.hash = tabId;
+            window.location.reload(); // Wymuszenie pełnego odświeżenia strony
+        }
 
-            // 2. Usuń podświetlenie ze wszystkich linków w menu
-            const links = document.querySelectorAll('.nav-links a');
-            links.forEach(link => link.classList.remove('active'));
+        // Funkcja wykonująca się automatycznie po każdym załadowaniu/odświeżeniu strony
+        function initPage() {
+            // Pobierz aktualny tag z adresu (np. "#instrukcja"), usuń znak "#". Jeśli brak tagu, ustaw domyślnie "licytacje"
+            let currentTab = window.location.hash.replace('#', '') || 'licytacje';
 
-            // 3. Pokaż wybraną zakładkę
-            document.getElementById('tab-' + tabId).classList.add('active');
+            // Zabezpieczenie przed błędnym wpisem w URL
+            if (!['licytacje', 'instrukcja', 'logowanie'].includes(currentTab)) {
+                currentTab = 'licytacje';
+            }
 
-            // 4. Podświetl kliknięty element menu
-            document.getElementById('link-' + tabId).classList.add('active');
+            // 1. Aktywuj odpowiednią sekcję HTML
+            document.getElementById('tab-' + currentTab).classList.add('active');
 
-            // ZMIANA: Dynamiczna podmiana tekstu po lewej stronie panelu menu
+            // 2. Podświetl odpowiedni element w menu
+            document.getElementById('link-' + currentTab).classList.add('active');
+
+            // 3. Zmień tekst w panelu sterowania po lewej stronie
             const menuTitle = document.getElementById('main-menu-title');
-            if (tabId === 'licytacje') {
+            if (currentTab === 'licytacje') {
                 menuTitle.innerText = 'LICYTACJA AKCJI';
-            } else if (tabId === 'instrukcja') {
+            } else if (currentTab === 'instrukcja') {
                 menuTitle.innerText = 'INSTRUKCJA';
-            } else if (tabId === 'logowanie') {
+            } else if (currentTab === 'logowanie') {
                 menuTitle.innerText = 'LOGOWANIE';
             }
         }
+
+        // Uruchom konfigurację przy starcie/odświeżeniu
+        window.onload = initPage;
     </script>
 
 </body>

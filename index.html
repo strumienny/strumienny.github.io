@@ -22,7 +22,7 @@
             line-height: 1.6;
         }
 
-        /* GÓRNE MENU (NAVBAR) - NAPIŚ PO LEWEJ */
+        /* GÓRNE MENU (NAVBAR) */
         .navbar {
             position: sticky;
             top: 0;
@@ -30,7 +30,7 @@
             border-bottom: 1px solid #2d2d2d;
             padding: 15px 30px;
             display: flex;
-            justify-content: space-between; /* Rozsuwa tekst na lewo, linki na prawo */
+            justify-content: space-between; 
             align-items: center;
             z-index: 1000;
         }
@@ -54,6 +54,7 @@
             font-size: 16px;
             font-weight: 500;
             transition: color 0.3s ease;
+            cursor: pointer;
         }
 
         .navbar .nav-links a:hover {
@@ -76,7 +77,7 @@
             font-size: 28px;
             font-weight: 600;
             text-align: center;
-            white-space: pre-line; /* Pozwala na łamanie linii w nagłówku za pomocą \n lub entera */
+            white-space: pre-line; 
         }
 
         /* RESPONSYWNE KONTENERY DLA TABEL */
@@ -144,6 +145,93 @@
             white-space: nowrap; 
         }
 
+        /* STYLIZACJA OKIENKA LOGOWANIA (MODAL) */
+        .modal {
+            display: none; /* Domyślnie ukryte */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid #2d2d2d;
+            position: relative;
+        }
+
+        .modal-content h2 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: #a0a0a0;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #ffffff;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #a0a0a0;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            background-color: #121212;
+            border: 1px solid #2d2d2d;
+            border-radius: 4px;
+            color: #e0e0e0;
+            font-size: 15px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        .login-submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #3b82f6;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-submit-btn:hover {
+            background-color: #2563eb;
+        }
+
         /* DOSTOSOWANIE DO EKRANÓW MOBILNYCH */
         @media (max-width: 600px) {
             .navbar {
@@ -168,17 +256,17 @@
     <nav class="navbar">
         <div class="menu-title">LICYTACJA AKCJI</div>
         <ul class="nav-links">
-            <li><a href="#licytacje">Licytacje</a></li>
-            <li><a href="#opis">Opis Tabeli</a></li>
+            <!-- ZMIANA: Usunięto opis tabeli, Zamieniono miejscami instrukcję i licytacje -->
             <li><a href="#instrukcja">Instrukcja</a></li>
-            <li><a href="#logowanie">Logowanie</a></li>
+            <li><a href="#licytacje">Licytacje</a></li>
+            <li><a onclick="openModal()">Logowanie</a></li>
         </ul>
     </nav>
 
     <!-- ZENTROWANA ZAWARTOŚĆ STRONY -->
     <main class="main-container">
         
-        <!-- Pierwsza tabela (dwie kolumny z wyśrodkowanymi wpisami) -->
+        <!-- Pierwsza tabela -->
         <div class="table-responsive table-sellers" style="max-width: 500px;">
             <table>
                 <tbody>
@@ -198,7 +286,7 @@
             </table>
         </div>
 
-        <!-- ZMIANA: Nagłówek główny ze zmienioną treścią i formatowaniem -->
+        <!-- Nagłówek główny -->
         <h1 class="page-title">KONIEC AUKCJI :
 -- : --</h1>
 
@@ -210,32 +298,28 @@
                         <th colspan="3" class="row-centered">LICYTACJA</th>
                     </tr>
                     <tr>
-                        <!-- ZMIANA: Nagłówek "Gracz" zmieniony na "Użytkownik" -->
-                        <th class="col-uzytkownik">Użytkownik</th>
+                        <!-- ZMIANA: "Użytkownik" zmieniony na "Użytkownik kupujący" -->
+                        <th class="col-uzytkownik">Użytkownik kupujący</th>
                         <th class="col-kwota">Kwota</th>
                         <th class="col-nr-akcji">Nr. Akcji</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Wiersz 1 -->
                     <tr>
                         <td>Gracz_101</td>
                         <td>1 200 zł</td>
                         <td>#A-9942</td>
                     </tr>
-                    <!-- Wiersz 2 -->
                     <tr>
                         <td>Gracz_X</td>
                         <td>1 150 zł</td>
                         <td>#A-9941</td>
                     </tr>
-                    <!-- Wiersz 3 -->
                     <tr>
                         <td>Sniper99</td>
                         <td>950 zł</td>
                         <td>#A-9938</td>
                     </tr>
-                    <!-- Wiersz 4 -->
                     <tr>
                         <td>MistrzAukcji</td>
                         <td>800 zł</td>
@@ -247,5 +331,17 @@
 
     </main>
 
-</body>
-</html>
+    <!-- OKIENKO LOGOWANIA (MODAL) -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Zaloguj się</h2>
+            <form onsubmit="event.preventDefault(); alert('Próba logowania...'); closeModal();">
+                <div class="form-group">
+                    <label for="username">Nazwa użytkownika lub Email</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Hasło</label>
+                    <input type="password" id="password" required>
+                </div>

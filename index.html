@@ -57,12 +57,18 @@
             cursor: pointer;
         }
 
-        .navbar .nav-links a:hover {
-            color: #3b82f6; /* Niebieski akcent */
+        /* Aktywna zakładka podświetla się na jasny kolor */
+        .navbar .nav-links a.active, .navbar .nav-links a:hover {
+            color: #3b82f6; 
         }
 
-        /* CENTRALNY KONTENER POD MENU */
-        .main-container {
+        /* PODSTAWOWY STYL DLA SEKCJI ZAKŁADEK */
+        .tab-content {
+            display: none; /* Domyślnie wszystkie ukryte */
+        }
+
+        /* Sekcja aktywna staje się widoczna jako Flexbox na środku */
+        .tab-content.active {
             display: flex;
             flex-direction: column;
             justify-content: center; 
@@ -145,91 +151,11 @@
             white-space: nowrap; 
         }
 
-        /* STYLIZACJA OKIENKA LOGOWANIA (MODAL) */
-        .modal {
-            display: none; /* Domyślnie ukryte */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: #1e1e1e;
-            padding: 30px;
-            border-radius: 8px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            border: 1px solid #2d2d2d;
-            position: relative;
-        }
-
-        .modal-content h2 {
-            color: #ffffff;
-            margin-bottom: 20px;
-            font-size: 22px;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 24px;
-            color: #a0a0a0;
-            cursor: pointer;
-        }
-
-        .close-btn:hover {
-            color: #ffffff;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #a0a0a0;
-            font-size: 14px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            background-color: #121212;
-            border: 1px solid #2d2d2d;
-            border-radius: 4px;
-            color: #e0e0e0;
-            font-size: 15px;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #3b82f6;
-        }
-
-        .login-submit-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #3b82f6;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .login-submit-btn:hover {
-            background-color: #2563eb;
+        /* KLASA DLA CZYSTEJ STRONY */
+        .blank-page {
+            color: #666;
+            font-size: 18px;
+            font-style: italic;
         }
 
         /* DOSTOSOWANIE DO EKRANÓW MOBILNYCH */
@@ -244,7 +170,7 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
-            .main-container {
+            .tab-content.active {
                 min-height: calc(100vh - 110px);
             }
         }
@@ -256,15 +182,19 @@
     <nav class="navbar">
         <div class="menu-title">LICYTACJA AKCJI</div>
         <ul class="nav-links">
-            <!-- ZMIANA: Usunięto opis tabeli, Zamieniono miejscami instrukcję i licytacje -->
-            <li><a href="#instrukcja">Instrukcja</a></li>
-            <li><a href="#licytacje">Licytacje</a></li>
-            <li><a onclick="openModal()">Logowanie</a></li>
+            <li><a onclick="showTab('instrukcja')" id="link-instrukcja">Instrukcja</a></li>
+            <li><a onclick="showTab('licytacje')" id="link-licytacje" class="active">Licytacje</a></li>
+            <li><a onclick="showTab('logowanie')" id="link-logowanie">Logowanie</a></li>
         </ul>
     </nav>
 
-    <!-- ZENTROWANA ZAWARTOŚĆ STRONY -->
-    <main class="main-container">
+    <!-- ZAKŁADKA 1: INSTRUKCJA (CZYSTA STRONA) -->
+    <main id="tab-instrukcja" class="tab-content">
+        <div class="blank-page"><!-- Tutaj jest zupełnie czysto --></div>
+    </main>
+
+    <!-- ZAKŁADKA 2: LICYTACJE (TUTAJ SĄ TABELE) -->
+    <main id="tab-licytacje" class="tab-content active">
         
         <!-- Pierwsza tabela -->
         <div class="table-responsive table-sellers" style="max-width: 500px;">
@@ -298,7 +228,6 @@
                         <th colspan="3" class="row-centered">LICYTACJA</th>
                     </tr>
                     <tr>
-                        <!-- ZMIANA: "Użytkownik" zmieniony na "Użytkownik kupujący" -->
                         <th class="col-uzytkownik">Użytkownik kupujący</th>
                         <th class="col-kwota">Kwota</th>
                         <th class="col-nr-akcji">Nr. Akcji</th>
@@ -331,17 +260,29 @@
 
     </main>
 
-    <!-- OKIENKO LOGOWANIA (MODAL) -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2>Zaloguj się</h2>
-            <form onsubmit="event.preventDefault(); alert('Próba logowania...'); closeModal();">
-                <div class="form-group">
-                    <label for="username">Nazwa użytkownika lub Email</label>
-                    <input type="text" id="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Hasło</label>
-                    <input type="password" id="password" required>
-                </div>
+    <!-- ZAKŁADKA 3: LOGOWANIE (CZYSTA STRONA) -->
+    <main id="tab-logowanie" class="tab-content">
+        <div class="blank-page"><!-- Tutaj również jest zupełnie czysto --></div>
+    </main>
+
+    <!-- SKRYPT DO OBSŁUGI PRZEŁĄCZANIA ZAKŁADEK -->
+    <script>
+        function showTab(tabId) {
+            // 1. Ukryj całą zawartość wszystkich zakładek
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // 2. Usuń podświetlenie (klasę active) ze wszystkich linków w menu
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => link.classList.remove('active'));
+
+            // 3. Pokaż wybraną zakładkę
+            document.getElementById('tab-' + tabId).classList.add('active');
+
+            // 4. Podświetl kliknięty element menu
+            document.getElementById('link-' + tabId).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

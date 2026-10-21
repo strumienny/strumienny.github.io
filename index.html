@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ciemny Szablon - Menu i Tabela</title>
+    <title>Panel Aukcji</title>
     <style>
         /* Reset podstawowych styli */
         * {
@@ -23,7 +23,7 @@
         .navbar {
             position: sticky;
             top: 0;
-            background-color: #1e1e1e; /* Kontrastowe, ciemne tło menu */
+            background-color: #1e1e1e; 
             border-bottom: 1px solid #2d2d2d;
             padding: 15px 30px;
             display: flex;
@@ -53,16 +53,18 @@
             transition: color 0.3s ease;
         }
 
-        /* Efekt najechania na link w menu */
         .navbar .nav-links a:hover {
             color: #3b82f6; /* Niebieski akcent */
         }
 
-        /* GŁÓWNY KONTENER POD MENU */
-        .content-container {
-            max-width: 1000px;
-            margin: 40px auto; /* Margines u góry i na dole, centrowanie w poziomie */
-            padding: 0 20px;
+        /* CENTRALNY KONTENER POD MENU (FLEXBOX) */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centrowanie tabeli w pionie */
+            align-items: center;     /* Centrowanie tabeli w poziomie */
+            min-height: calc(100vh - 74px); /* Pełna wysokość minus wysokość menu */
+            padding: 40px 20px;
         }
 
         .page-title {
@@ -70,27 +72,29 @@
             margin-bottom: 24px;
             font-size: 28px;
             font-weight: 600;
+            text-align: center;
         }
 
         /* RESPONSYWNY KONTENER DLA TABELI */
         .table-responsive {
             width: 100%;
+            max-width: 800px;
             overflow-x: auto; /* Przewijanie w bok na małych telefonach */
             background-color: #1e1e1e;
             border-radius: 8px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
         }
 
-        /* STYLIZACJA TABELI */
+        /* STYLIZACJA TABELI (BEZ PODKREŚLEŃ) */
         table {
             width: 100%;
-            border-collapse: collapse; /* Usunięcie podwójnych ramek */
+            border-collapse: collapse; 
             text-align: left;
         }
 
         /* Styl nagłówków */
         th {
-            background-color: #3b82f6; /* Niebieskie tło nagłówka */
+            background-color: #3b82f6; 
             color: #ffffff;
             font-weight: 600;
             text-transform: uppercase;
@@ -99,22 +103,17 @@
             padding: 16px 20px;
         }
 
-        /* Styl komórek (wierszy danych) */
+        /* Styl komórek (BRAK BORDER-BOTTOM / PODKREŚLEŃ) */
         td {
             padding: 16px 20px;
-            border-bottom: 1px solid #2d2d2d;
             font-size: 15px;
+            border: none; /* Całkowite usunięcie linii i obramowań */
         }
 
-        /* Efekt podświetlenia wiersza po najechaniu */
+        /* Efekt delikatnego podświetlenia wiersza po najechaniu */
         tbody tr:hover {
             background-color: #252525;
             transition: background-color 0.2s ease;
-        }
-
-        /* Usunięcie dolnej kreski w ostatnim wierszu */
-        tbody tr:last-child td {
-            border-bottom: none;
         }
 
         /* DOSTOSOWANIE DO EKRANÓW MOBILNYCH */
@@ -127,8 +126,8 @@
             .navbar .nav-links {
                 gap: 15px;
             }
-            .content-container {
-                margin: 20px auto;
+            .main-container {
+                min-height: calc(100vh - 110px);
             }
         }
     </style>
@@ -137,59 +136,59 @@
 
     <!-- GÓRNE MENU -->
     <nav class="navbar">
-        <a href="#" class="logo">PanelProjektu</a>
+        <a href="#" class="logo">Sam Panel</a>
         <ul class="nav-links">
-            <li><a href="#glowna">Strona Główna</a></li>
-            <li><a href="#projekty">Projekty</a></li>
-            <li><a href="#statystyki">Statystyki</a></li>
-            <li><a href="#ustawienia">Ustawienia</a></li>
+            <li><a href="#licytacje">Licytacje</a></li>
+            <li><a href="#opis">Opis Tabeli</a></li>
+            <li><a href="#jak-grac">Jak Grać</a></li>
+            <li><a href="#logowanie">Logowanie</a></li>
         </ul>
     </nav>
 
-    <!-- ZAWARTOŚĆ STRONY POD MENU -->
-    <main class="content-container">
+    <!-- ZENTROWANA ZAWARTOŚĆ STRONY -->
+    <main class="main-container">
         
-        <h1 class="page-title">Podsumowanie Zgłoszeń</h1>
+        <h1 class="page-title">Czas Do Końca Aukcji</h1>
 
-        <!-- Kontener tabeli -->
+        <!-- Kontener tabeli na środku ekranu -->
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nazwa zadania</th>
+                        <th>Gracz</th>
+                        <th>Kwota</th>
                         <th>Status</th>
-                        <th>Ostatnia zmiana</th>
+                        <th>Nr. Akcji</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Wiersz 1 -->
                     <tr>
-                        <td>#101</td>
-                        <td>Aktualizacja bazy danych</td>
-                        <td style="color: #10b981; font-weight: bold;">Zakończono</td>
-                        <td>Dzisiaj, 14:20</td>
+                        <td>Gracz_101</td>
+                        <td>1 200 zł</td>
+                        <td style="color: #10b981; font-weight: bold;">Wygrywa</td>
+                        <td>#A-9942</td>
                     </tr>
                     <!-- Wiersz 2 -->
                     <tr>
-                        <td>#102</td>
-                        <td>Projekt interfejsu UI</td>
-                        <td style="color: #3b82f6; font-weight: bold;">W trakcie</td>
-                        <td>Wczoraj, 18:05</td>
+                        <td>Gracz_X</td>
+                        <td>1 150 zł</td>
+                        <td style="color: #a0a0a0;">Przebita</td>
+                        <td>#A-9941</td>
                     </tr>
                     <!-- Wiersz 3 -->
                     <tr>
-                        <td>#103</td>
-                        <td>Testy bezpieczeństwa API</td>
-                        <td style="color: #f59e0b; font-weight: bold;">Oczekuje</td>
-                        <td>19.10.2026</td>
+                        <td>Sniper99</td>
+                        <td>950 zł</td>
+                        <td style="color: #a0a0a0;">Przebita</td>
+                        <td>#A-9938</td>
                     </tr>
                     <!-- Wiersz 4 -->
                     <tr>
-                        <td>#104</td>
-                        <td>Naprawa błędu z logowaniem</td>
-                        <td style="color: #ef4444; font-weight: bold;">Wstrzymano</td>
-                        <td>15.10.2026</td>
+                        <td>MistrzAukcji</td>
+                        <td>800 zł</td>
+                        <td style="color: #ef4444; font-weight: bold;">Wycofana</td>
+                        <td>#A-9935</td>
                     </tr>
                 </tbody>
             </table>

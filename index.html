@@ -19,7 +19,7 @@
             line-height: 1.6;
         }
 
-        /* GÓRNE MENU (NAVBAR) - USUNIĘTO LOGO */
+        /* GÓRNE MENU (NAVBAR) - NAPIŚ PO LEWEJ */
         .navbar {
             position: sticky;
             top: 0;
@@ -27,9 +27,16 @@
             border-bottom: 1px solid #2d2d2d;
             padding: 15px 30px;
             display: flex;
-            justify-content: center; /* Wyśrodkowanie linków po usunięciu logo */
+            justify-content: space-between; /* Rozsuwa tekst na lewo, linki na prawo */
             align-items: center;
             z-index: 1000;
+        }
+
+        .navbar .menu-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 0.5px;
         }
 
         .navbar .nav-links {
@@ -58,7 +65,7 @@
             align-items: center;     
             min-height: calc(100vh - 74px); 
             padding: 40px 20px;
-            gap: 24px; /* Odstępy między tabelami i nagłówkiem */
+            gap: 24px; 
         }
 
         .page-title {
@@ -78,7 +85,7 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.5);
         }
 
-        /* STYLIZACJA TABEL (BEZ PODKREŚLEŃ) */
+        /* STYLIZACJA TABEL */
         table {
             width: 100%;
             border-collapse: collapse; 
@@ -101,23 +108,48 @@
             border: none; 
         }
 
+        /* PIERWSZA TABELA - WYŚRODKOWANIE WPISÓW */
+        .table-sellers table {
+            text-align: center;
+        }
+
         tbody tr:hover {
             background-color: #252525;
             transition: background-color 0.2s ease;
         }
 
-        /* Specjalny styl dla wiersza "Aukcja" wyśrodkowanego */
+        /* Specjalny styl dla nagłówka "AUKCJA" na środku */
         .row-centered {
             text-align: center;
             font-weight: bold;
-            font-size: 18px;
-            letter-spacing: 1px;
+            font-size: 20px;
+            letter-spacing: 6px; /* Lekkie rozstrzelenie liter dla czytelności "A U K C J A" */
             background-color: #2a2a2a;
             color: #ffffff;
         }
 
+        /* PRECYZYJNE SZEROKOŚCI KOLUMN DLA DRUGIEJ TABELI */
+        /* Kolumna 1: Rozciągnięta pod pierwszą literę A */
+        .col-gracz {
+            width: 50%; 
+        }
+        /* Kolumna 2: Szerokość środkowa pod litery U, K, C, J */
+        .col-kwota {
+            width: 30%; 
+        }
+        /* Kolumna 3: Maksymalnie zwężona do samej nazwy nagłówka */
+        .col-nr-akcji {
+            width: 20%; 
+            white-space: nowrap; /* Zapobiega łamaniu nazwy NR. AKCJI */
+        }
+
         /* DOSTOSOWANIE DO EKRANÓW MOBILNYCH */
         @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
             .navbar .nav-links {
                 gap: 15px;
                 flex-wrap: wrap;
@@ -131,8 +163,10 @@
 </head>
 <body>
 
-    <!-- GÓRNE MENU (BEZ LOGO) -->
+    <!-- GÓRNE MENU -->
     <nav class="navbar">
+        <!-- NOWY: Tekst po lewej stronie paska -->
+        <div class="menu-title">LICYTACJA AKCJI</div>
         <ul class="nav-links">
             <li><a href="#licytacje">Licytacje</a></li>
             <li><a href="#opis">Opis Tabeli</a></li>
@@ -144,8 +178,8 @@
     <!-- ZENTROWANA ZAWARTOŚĆ STRONY -->
     <main class="main-container">
         
-        <!-- NOWA TABELA NAD NAPISEM (3 wiersze, 1 kolumna) -->
-        <div class="table-responsive" style="max-width: 400px;"> <!-- węższa dla lepszego wyglądu -->
+        <!-- PIERWSZA TABELA (Wysymulowane klasy dla wyśrodkowania wpisów) -->
+        <div class="table-responsive table-sellers" style="max-width: 400px;">
             <table>
                 <tbody>
                     <tr>
@@ -168,14 +202,14 @@
         <div class="table-responsive">
             <table>
                 <thead>
-                    <!-- NOWY: Pierwszy, jednokolumnowy wiersz na środku tabeli -->
+                    <!-- Wspólny nagłówek z rozstrzelonym słowem AUKCJA -->
                     <tr>
-                        <th colspan="3" class="row-centered">Aukcja</th>
+                        <th colspan="3" class="row-centered">AUKCJA</th>
                     </tr>
                     <tr>
-                        <th>Gracz</th>
-                        <th>Kwota</th>
-                        <th>Nr. Akcji</th>
+                        <th class="col-gracz">Gracz</th>
+                        <th class="col-kwota">Kwota</th>
+                        <th class="col-nr-akcji">Nr. Akcji</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -176,7 +176,6 @@
     <nav class="navbar">
         <div class="menu-title" id="main-menu-title">LICYTACJA AKCJI</div>
         <ul class="nav-links">
-            <!-- ZMIANA: Każdy link kieruje teraz do odnośnika typu href="#nazwa" i wymusza przeładowanie -->
             <li><a href="#licytacje" onclick="navigateToTab('licytacje')" id="link-licytacje">Licytacje</a></li>
             <li><a href="#instrukcja" onclick="navigateToTab('instrukcja')" id="link-instrukcja">Instrukcja</a></li>
             <li><a href="#logowanie" onclick="navigateToTab('logowanie')" id="link-logowanie">Logowanie</a></li>
@@ -210,12 +209,12 @@
         <h1 class="page-title">KONIEC AUKCJI :
 -- : --</h1>
 
-        <!-- GŁÓWNA TABELA -->
+        <!-- GŁÓWNA TABELA (LICYTACJA 5) -->
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
-                        <th colspan="3" class="row-centered">LICYTACJA</th>
+                        <th colspan="3" class="row-centered">LICYTACJA 5</th>
                     </tr>
                     <tr>
                         <th class="col-uzytkownik">Użytkownik kupujący</th>
@@ -248,56 +247,75 @@
             </table>
         </div>
 
-    </main>
+        <!-- TABELA DODATKOWA (LICYTACJA 4) -->
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3" class="row-centered">LICYTACJA 4</th>
+                    </tr>
+                    <tr>
+                        <th class="col-uzytkownik">Użytkownik kupujący</th>
+                        <th class="col-kwota">Kwota</th>
+                        <th class="col-nr-akcji">Nr. Akcji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gracz_101</td>
+                        <td>1 200 zł</td>
+                        <td>#A-9942</td>
+                    </tr>
+                    <tr>
+                        <td>Gracz_X</td>
+                        <td>1 150 zł</td>
+                        <td>#A-9941</td>
+                    </tr>
+                    <tr>
+                        <td>Sniper99</td>
+                        <td>950 zł</td>
+                        <td>#A-9938</td>
+                    </tr>
+                    <tr>
+                        <td>MistrzAukcji</td>
+                        <td>800 zł</td>
+                        <td>#A-9935</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <!-- ZAKŁADKA 2: INSTRUKCJA (CZYSTA STRONA) -->
-    <main id="tab-instrukcja" class="tab-content">
-        <!-- Czysta strona -->
-    </main>
-
-    <!-- ZAKŁADKA 3: LOGOWANIE (CZYSTA STRONA) -->
-    <main id="tab-logowanie" class="tab-content">
-        <!-- Czysta strona -->
-    </main>
-
-    <!-- JAVASCRIPT: OBSŁUGA ODŚWIEŻANIA I ZAPAMIĘTYWANIA STANÓW -->
-    <script>
-        // Funkcja wywoływana w momencie kliknięcia (zmienia adres URL i odświeża stronę)
-        function navigateToTab(tabId) {
-            window.location.hash = tabId;
-            window.location.reload(); // Wymuszenie pełnego odświeżenia strony
-        }
-
-        // Funkcja wykonująca się automatycznie po każdym załadowaniu/odświeżeniu strony
-        function initPage() {
-            // Pobierz aktualny tag z adresu (np. "#instrukcja"), usuń znak "#". Jeśli brak tagu, ustaw domyślnie "licytacje"
-            let currentTab = window.location.hash.replace('#', '') || 'licytacje';
-
-            // Zabezpieczenie przed błędnym wpisem w URL
-            if (!['licytacje', 'instrukcja', 'logowanie'].includes(currentTab)) {
-                currentTab = 'licytacje';
-            }
-
-            // 1. Aktywuj odpowiednią sekcję HTML
-            document.getElementById('tab-' + currentTab).classList.add('active');
-
-            // 2. Podświetl odpowiedni element w menu
-            document.getElementById('link-' + currentTab).classList.add('active');
-
-            // 3. Zmień tekst w panelu sterowania po lewej stronie
-            const menuTitle = document.getElementById('main-menu-title');
-            if (currentTab === 'licytacje') {
-                menuTitle.innerText = 'LICYTACJA AKCJI';
-            } else if (currentTab === 'instrukcja') {
-                menuTitle.innerText = 'INSTRUKCJA';
-            } else if (currentTab === 'logowanie') {
-                menuTitle.innerText = 'LOGOWANIE';
-            }
-        }
-
-        // Uruchom konfigurację przy starcie/odświeżeniu
-        window.onload = initPage;
-    </script>
-
-</body>
-</html>
+        <!-- TABELA DODATKOWA (LICYTACJA 3) -->
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3" class="row-centered">LICYTACJA 3</th>
+                    </tr>
+                    <tr>
+                        <th class="col-uzytkownik">Użytkownik kupujący</th>
+                        <th class="col-kwota">Kwota</th>
+                        <th class="col-nr-akcji">Nr. Akcji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gracz_101</td>
+                        <td>1 200 zł</td>
+                        <td>#A-9942</td>
+                    </tr>
+                    <tr>
+                        <td>Gracz_X</td>
+                        <td>1 150 zł</td>
+                        <td>#A-9941</td>
+                    </tr>
+                    <tr>
+                        <td>Sniper99</td>
+                        <td>950 zł</td>
+                        <td>#A-9938</td>
+                    </tr>
+                    <tr>
+                        <td>MistrzAukcji</td>
+                        <td>800 zł</td>
+                        <td>#A-9935</td>
+                    </tr>

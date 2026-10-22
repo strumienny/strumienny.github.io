@@ -9,17 +9,19 @@
 </head>
 <body>
 
-    <!-- GÓRNE MENU (PIERWSZY PANEL ZAKŁADEK) -->
+    <!-- GÓRNE MENU (GŁÓWNY PANEL ZAKŁADEK) -->
     <nav class="navbar">
         <div class="menu-title">LICYTACJA AKCJI</div>
         <ul class="nav-links">
-            <li><a onclick="showTab('licytacje')" id="link-licytacje" class="active">Licytacje</a></li>
+            <!-- Zakładka OD 0 została ustawiona jako domyślna i otwiera główną stronę licytacji -->
+            <li><a onclick="showTab('licytacje')" id="link-licytacje" class="active">OD 0</a></li>
+            <li><a onclick="showTab('od-1000')" id="link-od-1000">OD 1000</a></li>
             <li><a onclick="showTab('instrukcja')" id="link-instrukcja">Instrukcja</a></li>
             <li><a onclick="showTab('logowanie')" id="link-logowanie">Logowanie</a></li>
         </ul>
     </nav>
 
-    <!-- ZAKŁADKA 1: LICYTACJE -->
+    <!-- ZAKŁADKA 1: LICYTACJE (OTWIERANA PRZEZ "OD 0") -->
     <main id="tab-licytacje" class="tab-content active">
 
         <!-- Nagłówek główny -->
@@ -64,7 +66,7 @@
             </table>
         </div>
 
-        <!-- TABELA SPRZEDAJĄCYCH -->
+        <!-- TABELA SPRZEDAJĄCYCH (POMIĘDZY TABELAMI 5 A 4) -->
         <div class="table-responsive table-sellers" style="max-width: 500px;">
             <table>
                 <tbody>
@@ -160,29 +162,14 @@
             </table>
         </div>
 
-        <!-- DRUGI PANEL ZAKŁADEK (UMIESZCZONY IDEALNIE POD TABELAMI) -->
-        <div class="sub-panel-container">
-            <nav class="sub-panel-navbar">
-                <div class="menu-title">FILTR STAWKI</div>
-                <ul class="nav-links">
-                    <li><a onclick="showSubTab('od-0')" id="link-od-0" class="active">OD 0</a></li>
-                    <li><a onclick="showSubTab('od-1000')" id="link-od-1000">OD 1000</a></li>
-                </ul>
-            </nav>
-
-            <!-- ZAWARTOŚĆ DRUGIEGO PANELU -->
-            <div id="sub-tab-od-0" class="sub-tab-content active">
-                <p style="text-align: center; color: #a0a0a0; padding: 20px;">Wyświetlasz oferty zaczynające się od 0 zł.</p>
-            </div>
-
-            <div id="sub-tab-od-1000" class="sub-tab-content">
-                <p style="text-align: center; color: #a0a0a0; padding: 20px;">Wyświetlasz oferty zaczynające się od 1000 zł.</p>
-            </div>
-        </div>
-
     </main>
 
-    <!-- ZAKŁADKA 2: INSTRUKCJA -->
+    <!-- ZAKŁADKA 2: OD 1000 -->
+    <main id="tab-od-1000" class="tab-content">
+        <p style="text-align: center; color: #a0a0a0; padding: 20px; font-size: 18px;">Tutaj pojawi się zawartość dla ofert powyżej 1000 zł.</p>
+    </main>
+
+    <!-- ZAKŁADKA 3: INSTRUKCJA -->
     <main id="tab-instrukcja" class="tab-content">
         <div class="table-responsive table-sellers" style="max-width: 500px;">
             <table>
@@ -244,7 +231,7 @@
         </div>
     </main>
 
-    <!-- ZAKŁADKA 3: LOGOWANIE -->
+    <!-- ZAKŁADKA 4: LOGOWANIE -->
     <main id="tab-logowanie" class="tab-content">
         <!-- Tutaj w przyszłości znajdzie się formularz logowania -->
     </main>

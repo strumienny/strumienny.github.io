@@ -4,170 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Aukcji</title>
-    <style>
-        /* Reset podstawowych styli */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            /* Bordowe ozdobienie tła w postaci klimatycznej poświaty */
-            background-color: #121212; 
-            background-image: radial-gradient(circle at center, #4a0e17 0%, #121212 70%);
-            background-attachment: fixed;
-            color: #e0e0e0;            /* Jasny tekst */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-        }
-
-        /* GÓRNE MENU (NAVBAR) */
-        .navbar {
-            position: sticky;
-            top: 0;
-            background-color: #1e1e1e; 
-            border-bottom: 1px solid #2d2d2d;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between; 
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .navbar .menu-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-        }
-
-        .navbar .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        .navbar .nav-links a {
-            color: #a0a0a0;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-
-        /* Aktywna zakładka podświetla się na jasny kolor */
-        .navbar .nav-links a.active, .navbar .nav-links a:hover {
-            color: #3b82f6; 
-        }
-
-        /* PODSTAWOWY STYL DLA SEKCJI ZAKŁADEK */
-        .tab-content {
-            display: none; /* Domyślnie wszystkie ukryte */
-        }
-
-        /* Sekcja aktywna staje się widoczna jako Flexbox na środku */
-        .tab-content.active {
-            display: flex;
-            flex-direction: column;
-            justify-content: center; 
-            align-items: center;     
-            min-height: calc(100vh - 74px); 
-            padding: 40px 20px;
-            gap: 24px; 
-        }
-
-        .page-title {
-            color: #ffffff;
-            font-size: 28px;
-            font-weight: 600;
-            text-align: center;
-            white-space: pre-line; 
-        }
-
-        /* RESPONSYWNE KONTENERY DLA TABEL */
-        .table-responsive {
-            width: 100%;
-            max-width: 800px;
-            overflow-x: auto; 
-            background-color: #1e1e1e;
-            border-radius: 8px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-        }
-
-        /* STYLIZACJA TABEL */
-        table {
-            width: 100%;
-            border-collapse: collapse; 
-            text-align: left;
-        }
-
-        th {
-            background-color: #3b82f6; 
-            color: #ffffff;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 0.5px;
-            padding: 16px 20px;
-        }
-
-        td {
-            padding: 16px 20px;
-            font-size: 15px;
-            border: none; 
-        }
-
-        /* PIERWSZA TABELA - WYŚRODKOWANIE WPISÓW */
-        .table-sellers table {
-            text-align: center;
-        }
-
-        tbody tr:hover {
-            background-color: #252525;
-            transition: background-color 0.2s ease;
-        }
-
-        /* Słowo LICYTACJA na środku */
-        .row-centered {
-            text-align: center;
-            font-weight: bold;
-            font-size: 20px;
-            letter-spacing: 6px; 
-            background-color: #2a2a2a;
-            color: #ffffff;
-        }
-
-        /* PRECYZYJNE SZEROKOŚCI KOLUMN DLA DRUGIEJ TABELI */
-        .col-uzytkownik {
-            width: 50%; 
-        }
-        .col-kwota {
-            width: 30%; 
-        }
-        .col-nr-akcji {
-            width: 20%; 
-            white-space: nowrap; 
-        }
-
-        /* DOSTOSOWANIE DO EKRANÓW MOBILNYCH */
-        @media (max-width: 600px) {
-            .navbar {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            .navbar .nav-links {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .tab-content.active {
-                min-height: calc(100vh - 110px);
-            }
-        }
-    </style>
+    <!-- Łączymy plik HTML z plikiem stylów CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -175,17 +13,134 @@
     <nav class="navbar">
         <div class="menu-title">LICYTACJA AKCJI</div>
         <ul class="nav-links">
-            <!-- ZMIANA: Licytacje są teraz jako pierwsze, a Instrukcja jako druga -->
             <li><a onclick="showTab('licytacje')" id="link-licytacje" class="active">Licytacje</a></li>
             <li><a onclick="showTab('instrukcja')" id="link-instrukcja">Instrukcja</a></li>
             <li><a onclick="showTab('logowanie')" id="link-logowanie">Logowanie</a></li>
         </ul>
     </nav>
 
-    <!-- ZAKŁADKA 1: LICYTACJE (TUTAJ SĄ TABELE - DOMYŚLNIE AKTYWNA) -->
+    <!-- ZAKŁADKA 1: LICYTACJE -->
     <main id="tab-licytacje" class="tab-content active">
-        
-        <!-- Pierwsza tabela -->
+
+        <!-- Nagłówek główny -->
+        <h1 class="page-title">KONIEC AUKCJI :
+-- : --</h1>
+
+        <!-- TABELA 1: LICYTACJA 5 -->
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3" class="row-centered">LICYTACJA 5</th>
+                    </tr>
+                    <tr>
+                        <th class="col-uzytkownik">Użytkownik kupujący</th>
+                        <th class="col-kwota">Kwota</th>
+                        <th class="col-nr-akcji">Nr. Akcji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gracz_101</td>
+                        <td>1 200 zł</td>
+                        <td>#A-9942</td>
+                    </tr>
+                    <tr>
+                        <td>Gracz_X</td>
+                        <td>1 150 zł</td>
+                        <td>#A-9941</td>
+                    </tr>
+                    <tr>
+                        <td>Sniper99</td>
+                        <td>950 zł</td>
+                        <td>#A-9938</td>
+                    </tr>
+                    <tr>
+                        <td>MistrzAukcji</td>
+                        <td>800 zł</td>
+                        <td>#A-9935</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TABELA 2: LICYTACJA 4 -->
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3" class="row-centered">LICYTACJA 4</th>
+                    </tr>
+                    <tr>
+                        <th class="col-uzytkownik">Użytkownik kupujący</th>
+                        <th class="col-kwota">Kwota</th>
+                        <th class="col-nr-akcji">Nr. Akcji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gracz_101</td>
+                        <td>1 200 zł</td>
+                        <td>#A-9942</td>
+                    </tr>
+                    <tr>
+                        <td>Gracz_X</td>
+                        <td>1 150 zł</td>
+                        <td>#A-9941</td>
+                    </tr>
+                    <tr>
+                        <td>Sniper99</td>
+                        <td>950 zł</td>
+                        <td>#A-9938</td>
+                    </tr>
+                    <tr>
+                        <td>MistrzAukcji</td>
+                        <td>800 zł</td>
+                        <td>#A-9935</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TABELA 3: LICYTACJA 3 -->
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3" class="row-centered">LICYTACJA 3</th>
+                    </tr>
+                    <tr>
+                        <th class="col-uzytkownik">Użytkownik kupujący</th>
+                        <th class="col-kwota">Kwota</th>
+                        <th class="col-nr-akcji">Nr. Akcji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gracz_101</td>
+                        <td>1 200 zł</td>
+                        <td>#A-9942</td>
+                    </tr>
+                    <tr>
+                        <td>Gracz_X</td>
+                        <td>1 150 zł</td>
+                        <td>#A-9941</td>
+                    </tr>
+                    <tr>
+                        <td>Sniper99</td>
+                        <td>950 zł</td>
+                        <td>#A-9938</td>
+                    </tr>
+                    <tr>
+                        <td>MistrzAukcji</td>
+                        <td>800 zł</td>
+                        <td>#A-9935</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TABELA SPRZEDAJĄCYCH (PRZENIESIONA POD LICYTACJE) -->
         <div class="table-responsive table-sellers" style="max-width: 500px;">
             <table>
                 <tbody>
@@ -205,11 +160,49 @@
             </table>
         </div>
 
-        <!-- Nagłówek główny -->
+        <!-- OSOBNY PANEL STEROWANIA -->
+        <div class="sub-panel-container">
+            <nav class="sub-panel-navbar">
+                <div class="menu-title">PANEL STEROWANIA FILTRAMI</div>
+                <ul class="nav-links">
+                    <li><a onclick="showSubTab('od-0')" id="link-od-0" class="active">OD 0</a></li>
+                    <li><a onclick="showSubTab('od-1000')" id="link-od-1000">OD 1000</a></li>
+                </ul>
+            </nav>
+
+            <div id="sub-tab-od-0" class="sub-tab-content active">
+                <p style="text-align: center; color: #a0a0a0; padding: 20px;">Zawartość panelu dla ofert od 0 zł. Możesz tutaj umieścić dowolne formularze, przyciski lub dedykowane tabele.</p>
+            </div>
+
+            <div id="sub-tab-od-1000" class="sub-tab-content">
+                <p style="text-align: center; color: #a0a0a0; padding: 20px;">Zawartość panelu dla ofert powyżej 1000 zł. Idealne miejsce na przefiltrowane zestawienie ofert VIP.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ZAKŁADKA 2: INSTRUKCJA -->
+    <main id="tab-instrukcja" class="tab-content">
+        <div class="table-responsive table-sellers" style="max-width: 500px;">
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="font-weight: bold;">Użytkownicy Sprzedający</td>
+                        <td style="font-weight: bold;">Ilość sztuk</td>
+                    </tr>
+                    <tr>
+                        <td>Przykładowy_Sprzedawca_1</td>
+                        <td>5 szt.</td>
+                    </tr>
+                    <tr>
+                        <td>Przykładowy_Sprzedawca_2</td>
+                        <td>10 szt.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <h1 class="page-title">KONIEC AUKCJI :
 -- : --</h1>
-
-        <!-- GŁÓWNA TABELA -->
         <div class="table-responsive">
             <table>
                 <thead>
@@ -246,37 +239,14 @@
                 </tbody>
             </table>
         </div>
-
     </main>
 
-    <!-- ZAKŁADKA 2: INSTRUKCJA (CZYSTA STRONA) -->
-    <main id="tab-instrukcja" class="tab-content">
-        <!-- Czysta strona -->
-    </main>
-
-    <!-- ZAKŁADKA 3: LOGOWANIE (CZYSTA STRONA) -->
+    <!-- ZAKŁADKA 3: LOGOWANIE (CZYSTA) -->
     <main id="tab-logowanie" class="tab-content">
-        <!-- Czysta strona -->
+        <!-- Tutaj w przyszłości znajdzie się panel logowania -->
     </main>
 
-    <!-- SKRYPT DO OBSŁUGI PRZEŁĄCZANIA ZAKŁADEK -->
-    <script>
-        function showTab(tabId) {
-            // 1. Ukryj całą zawartość wszystkich zakładek
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-
-            // 2. Usuń podświetlenie (klasę active) ze wszystkich linków w menu
-            const links = document.querySelectorAll('.nav-links a');
-            links.forEach(link => link.classList.remove('active'));
-
-            // 3. Pokaż wybraną zakładkę
-            document.getElementById('tab-' + tabId).classList.add('active');
-
-            // 4. Podświetl kliknięty element menu
-            document.getElementById('link-' + tabId).classList.add('active');
-        }
-    </script>
-
+    <!-- Łączym plik HTML z logiką JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>

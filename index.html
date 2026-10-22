@@ -35,20 +35,20 @@
             z-index: 1000;
         }
 
-        .navbar .menu-title {
+        .navbar .menu-title, .sub-panel-navbar .menu-title {
             font-size: 16px;
             font-weight: bold;
             color: #ffffff;
             letter-spacing: 0.5px;
         }
 
-        .navbar .nav-links {
+        .navbar .nav-links, .sub-panel-navbar .nav-links {
             list-style: none;
             display: flex;
             gap: 25px;
         }
 
-        .navbar .nav-links a {
+        .navbar .nav-links a, .sub-panel-navbar .nav-links a {
             color: #a0a0a0;
             text-decoration: none;
             font-size: 16px;
@@ -58,24 +58,29 @@
         }
 
         /* Aktywna zakładka podświetla się na jasny kolor */
-        .navbar .nav-links a.active, .navbar .nav-links a:hover {
+        .navbar .nav-links a.active, .navbar .nav-links a:hover,
+        .sub-panel-navbar .nav-links a.active, .sub-panel-navbar .nav-links a:hover {
             color: #3b82f6; 
         }
 
         /* PODSTAWOWY STYL DLA SEKCJI ZAKŁADEK */
-        .tab-content {
+        .tab-content, .sub-tab-content {
             display: none; /* Domyślnie wszystkie ukryte */
         }
 
         /* Sekcja aktywna staje się widoczna jako Flexbox na środku */
-        .tab-content.active {
+        .tab-content.active, .sub-tab-content.active {
             display: flex;
             flex-direction: column;
             justify-content: center; 
             align-items: center;     
-            min-height: calc(100vh - 74px); 
             padding: 40px 20px;
             gap: 24px; 
+        }
+
+        /* Dopasowanie wysokości dla głównego kontenera */
+        #tab-licytacje.active {
+            min-height: auto; /* Usunięcie wymuszenia pełnego ekranu, aby panele układały się naturalnie jeden pod drugim */
         }
 
         .page-title {
@@ -151,20 +156,38 @@
             white-space: nowrap; 
         }
 
+        /* STYLIZACJA OSOBNEGO PANELU STEROWANIA */
+        .sub-panel-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #161616;
+            border: 1px solid #2d2d2d;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .sub-panel-navbar {
+            background-color: #222222;
+            border-bottom: 1px solid #2d2d2d;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         /* DOSTOSOWANIE DO EKRANÓW MOBILNYCH */
         @media (max-width: 600px) {
-            .navbar {
+            .navbar, .sub-panel-navbar {
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
             }
-            .navbar .nav-links {
+            .navbar .nav-links, .sub-panel-navbar .nav-links {
                 gap: 15px;
                 flex-wrap: wrap;
                 justify-content: center;
-            }
-            .tab-content.active {
-                min-height: calc(100vh - 110px);
             }
         }
     </style>
@@ -175,46 +198,25 @@
     <nav class="navbar">
         <div class="menu-title">LICYTACJA AKCJI</div>
         <ul class="nav-links">
-            <!-- ZMIANA: Licytacje są teraz jako pierwsze, a Instrukcja jako druga -->
             <li><a onclick="showTab('licytacje')" id="link-licytacje" class="active">Licytacje</a></li>
             <li><a onclick="showTab('instrukcja')" id="link-instrukcja">Instrukcja</a></li>
             <li><a onclick="showTab('logowanie')" id="link-logowanie">Logowanie</a></li>
         </ul>
     </nav>
 
-    <!-- ZAKŁADKA 1: LICYTACJE (TUTAJ SĄ TABELE - DOMYŚLNIE AKTYWNA) -->
+    <!-- ZAKŁADKA 1: LICYTACJE -->
     <main id="tab-licytacje" class="tab-content active">
-        
-        <!-- Pierwsza tabela -->
-        <div class="table-responsive table-sellers" style="max-width: 500px;">
-            <table>
-                <tbody>
-                    <tr>
-                        <td style="font-weight: bold;">Użytkownicy Sprzedający</td>
-                        <td style="font-weight: bold;">Ilość sztuk</td>
-                    </tr>
-                    <tr>
-                        <td>Przykładowy_Sprzedawca_1</td>
-                        <td>5 szt.</td>
-                    </tr>
-                    <tr>
-                        <td>Przykładowy_Sprzedawca_2</td>
-                        <td>10 szt.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
         <!-- Nagłówek główny -->
         <h1 class="page-title">KONIEC AUKCJI :
 -- : --</h1>
 
-        <!-- GŁÓWNA TABELA -->
+        <!-- TABELA 1: LICYTACJA 5 -->
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
-                        <th colspan="3" class="row-centered">LICYTACJA</th>
+                        <th colspan="3" class="row-centered">LICYTACJA 5</th>
                     </tr>
                     <tr>
                         <th class="col-uzytkownik">Użytkownik kupujący</th>
@@ -247,36 +249,71 @@
             </table>
         </div>
 
-    </main>
+        <!-- TABELA 2: LICYTACJA 4 -->
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3" class="row-centered">LICYTACJA 4</th>
+                    </tr>
+                    <tr>
+                        <th class="col-uzytkownik">Użytkownik kupujący</th>
+                        <th class="col-kwota">Kwota</th>
+                        <th class="col-nr-akcji">Nr. Akcji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gracz_101</td>
+                        <td>1 200 zł</td>
+                        <td>#A-9942</td>
+                    </tr>
+                    <tr>
+                        <td>Gracz_X</td>
+                        <td>1 150 zł</td>
+                        <td>#A-9941</td>
+                    </tr>
+                    <tr>
+                        <td>Sniper99</td>
+                        <td>950 zł</td>
+                        <td>#A-9938</td>
+                    </tr>
+                    <tr>
+                        <td>MistrzAukcji</td>
+                        <td>800 zł</td>
+                        <td>#A-9935</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <!-- ZAKŁADKA 2: INSTRUKCJA (CZYSTA STRONA) -->
-    <main id="tab-instrukcja" class="tab-content">
-        <!-- Czysta strona -->
-    </main>
-
-    <!-- ZAKŁADKA 3: LOGOWANIE (CZYSTA STRONA) -->
-    <main id="tab-logowanie" class="tab-content">
-        <!-- Czysta strona -->
-    </main>
-
-    <!-- SKRYPT DO OBSŁUGI PRZEŁĄCZANIA ZAKŁADEK -->
-    <script>
-        function showTab(tabId) {
-            // 1. Ukryj całą zawartość wszystkich zakładek
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-
-            // 2. Usuń podświetlenie (klasę active) ze wszystkich linków w menu
-            const links = document.querySelectorAll('.nav-links a');
-            links.forEach(link => link.classList.remove('active'));
-
-            // 3. Pokaż wybraną zakładkę
-            document.getElementById('tab-' + tabId).classList.add('active');
-
-            // 4. Podświetl kliknięty element menu
-            document.getElementById('link-' + tabId).classList.add('active');
-        }
-    </script>
-
-</body>
-</html>
+        <!-- TABELA 3: LICYTACJA 3 -->
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3" class="row-centered">LICYTACJA 3</th>
+                    </tr>
+                    <tr>
+                        <th class="col-uzytkownik">Użytkownik kupujący</th>
+                        <th class="col-kwota">Kwota</th>
+                        <th class="col-nr-akcji">Nr. Akcji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gracz_101</td>
+                        <td>1 200 zł</td>
+                        <td>#A-9942</td>
+                    </tr>
+                    <tr>
+                        <td>Gracz_X</td>
+                        <td>1 150 zł</td>
+                        <td>#A-9941</td>
+                    </tr>
+                    <tr>
+                        <td>Sniper99</td>
+                        <td>950 zł</td>
+                        <td>#A-9938</td>
+                    </tr>
+                    <tr>

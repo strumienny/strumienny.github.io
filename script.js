@@ -21,3 +21,4 @@ function showSubTab(subTabId) {
     document.getElementById(`sub-tab-${subTabId}`).classList.add('active');
     document.getElementById(`link-${subTabId}`).classList.add('active');
 }
+

@@ -1,23 +1,255 @@
-// Obsługa menu głównego (Licytacje, Instrukcja, Logowanie)
-function showTab(tabId) {
-    const contents = document.querySelectorAll('.tab-content');
-    contents.forEach(content => content.classList.remove('active'));
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Aukcji</title>
+    <!-- Łączymy plik HTML z plikiem stylów CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    const links = document.querySelectorAll('.navbar .nav-links a');
-    links.forEach(link => link.classList.remove('active'));
+    <!-- GÓRNE MENU (PIERWSZY PANEL ZAKŁADEK) -->
+    <nav class="navbar">
+        <div class="menu-title">LICYTACJA AKCJI</div>
+        <ul class="nav-links">
+            <li><a onclick="showTab('licytacje')" id="link-licytacje" class="active">Licytacje</a></li>
+            <li><a onclick="showTab('instrukcja')" id="link-instrukcja">Instrukcja</a></li>
+            <li><a onclick="showTab('logowanie')" id="link-logowanie">Logowanie</a></li>
+        </ul>
+    </nav>
 
-    document.getElementById(`tab-${tabId}`).classList.add('active');
-    document.getElementById(`link-${tabId}`).classList.add('active');
-}
+    <!-- ZAKŁADKA 1: LICYTACJE -->
+    <main id="tab-licytacje" class="tab-content active">
 
-// Obsługa drugiego panelu zakładek (OD 0, OD 1000)
-function showSubTab(subTabId) {
-    const subContents = document.querySelectorAll('.sub-tab-content');
-    subContents.forEach(content => content.classList.remove('active'));
+        <!-- Nagłówek główny -->
+        <h1 class="page-title">KONIEC AUKCJI :
+-- : --</h1>
 
-    const subLinks = document.querySelectorAll('.sub-panel-navbar .nav-links a');
-    subLinks.forEach(link => link.classList.remove('active'));
+        <!-- TABELA 1: LICYTACJA 5 -->
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3" class="row-centered">LICYTACJA 5</th>
+                    </tr>
+                    <tr>
+                        <th class="col-uzytkownik">Użytkownik kupujący</th>
+                        <th class="col-kwota">Kwota</th>
+                        <th class="col-nr-akcji">Nr. Akcji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gracz_101</td>
+                        <td>1 200 zł</td>
+                        <td>#A-9942</td>
+                    </tr>
+                    <tr>
+                        <td>Gracz_X</td>
+                        <td>1 150 zł</td>
+                        <td>#A-9941</td>
+                    </tr>
+                    <tr>
+                        <td>Sniper99</td>
+                        <td>950 zł</td>
+                        <td>#A-9938</td>
+                    </tr>
+                    <tr>
+                        <td>MistrzAukcji</td>
+                        <td>800 zł</td>
+                        <td>#A-9935</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    document.getElementById(`sub-tab-${subTabId}`).classList.add('active');
-    document.getElementById(`link-${subTabId}`).classList.add('active');
-}
+        <!-- TABELA SPRZEDAJĄCYCH -->
+        <div class="table-responsive table-sellers" style="max-width: 500px;">
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="font-weight: bold;">Użytkownicy Sprzedający</td>
+                        <td style="font-weight: bold;">Ilość sztuk</td>
+                    </tr>
+                    <tr>
+                        <td>Przykładowy_Sprzedawca_1</td>
+                        <td>5 szt.</td>
+                    </tr>
+                    <tr>
+                        <td>Przykładowy_Sprzedawca_2</td>
+                        <td>10 szt.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TABELA 2: LICYTACJA 4 -->
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3" class="row-centered">LICYTACJA 4</th>
+                    </tr>
+                    <tr>
+                        <th class="col-uzytkownik">Użytkownik kupujący</th>
+                        <th class="col-kwota">Kwota</th>
+                        <th class="col-nr-akcji">Nr. Akcji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gracz_101</td>
+                        <td>1 200 zł</td>
+                        <td>#A-9942</td>
+                    </tr>
+                    <tr>
+                        <td>Gracz_X</td>
+                        <td>1 150 zł</td>
+                        <td>#A-9941</td>
+                    </tr>
+                    <tr>
+                        <td>Sniper99</td>
+                        <td>950 zł</td>
+                        <td>#A-9938</td>
+                    </tr>
+                    <tr>
+                        <td>MistrzAukcji</td>
+                        <td>800 zł</td>
+                        <td>#A-9935</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TABELA 3: LICYTACJA 3 -->
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3" class="row-centered">LICYTACJA 3</th>
+                    </tr>
+                    <tr>
+                        <th class="col-uzytkownik">Użytkownik kupujący</th>
+                        <th class="col-kwota">Kwota</th>
+                        <th class="col-nr-akcji">Nr. Akcji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gracz_101</td>
+                        <td>1 200 zł</td>
+                        <td>#A-9942</td>
+                    </tr>
+                    <tr>
+                        <td>Gracz_X</td>
+                        <td>1 150 zł</td>
+                        <td>#A-9941</td>
+                    </tr>
+                    <tr>
+                        <td>Sniper99</td>
+                        <td>950 zł</td>
+                        <td>#A-9938</td>
+                    </tr>
+                    <tr>
+                        <td>MistrzAukcji</td>
+                        <td>800 zł</td>
+                        <td>#A-9935</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- DRUGI PANEL ZAKŁADEK (UMIESZCZONY IDEALNIE POD TABELAMI) -->
+        <div class="sub-panel-container">
+            <nav class="sub-panel-navbar">
+                <div class="menu-title">FILTR STAWKI</div>
+                <ul class="nav-links">
+                    <li><a onclick="showSubTab('od-0')" id="link-od-0" class="active">OD 0</a></li>
+                    <li><a onclick="showSubTab('od-1000')" id="link-od-1000">OD 1000</a></li>
+                </ul>
+            </nav>
+
+            <!-- ZAWARTOŚĆ DRUGIEGO PANELU -->
+            <div id="sub-tab-od-0" class="sub-tab-content active">
+                <p style="text-align: center; color: #a0a0a0; padding: 20px;">Wyświetlasz oferty zaczynające się od 0 zł.</p>
+            </div>
+
+            <div id="sub-tab-od-1000" class="sub-tab-content">
+                <p style="text-align: center; color: #a0a0a0; padding: 20px;">Wyświetlasz oferty zaczynające się od 1000 zł.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ZAKŁADKA 2: INSTRUKCJA -->
+    <main id="tab-instrukcja" class="tab-content">
+        <div class="table-responsive table-sellers" style="max-width: 500px;">
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="font-weight: bold;">Użytkownicy Sprzedający</td>
+                        <td style="font-weight: bold;">Ilość sztuk</td>
+                    </tr>
+                    <tr>
+                        <td>Przykładowy_Sprzedawca_1</td>
+                        <td>5 szt.</td>
+                    </tr>
+                    <tr>
+                        <td>Przykładowy_Sprzedawca_2</td>
+                        <td>10 szt.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <h1 class="page-title">KONIEC AUKCJI :
+-- : --</h1>
+        
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3" class="row-centered">LICYTACJA</th>
+                    </tr>
+                    <tr>
+                        <th class="col-uzytkownik">Użytkownik kupujący</th>
+                        <th class="col-kwota">Kwota</th>
+                        <th class="col-nr-akcji">Nr. Akcji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gracz_101</td>
+                        <td>1 200 zł</td>
+                        <td>#A-9942</td>
+                    </tr>
+                    <tr>
+                        <td>Gracz_X</td>
+                        <td>1 150 zł</td>
+                        <td>#A-9941</td>
+                    </tr>
+                    <tr>
+                        <td>Sniper99</td>
+                        <td>950 zł</td>
+                        <td>#A-9938</td>
+                    </tr>
+                    <tr>
+                        <td>MistrzAukcji</td>
+                        <td>800 zł</td>
+                        <td>#A-9935</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- ZAKŁADKA 3: LOGOWANIE -->
+    <main id="tab-logowanie" class="tab-content">
+        <!-- Miejsce na formularz logowania -->
+    </main>
+
+    <!-- Łączymy plik HTML z logiką JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

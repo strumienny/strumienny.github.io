@@ -1,0 +1,185 @@
+/* Reset podstawowych styli */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Bordowe ozdobienie tła w postaci klimatycznej poświaty */
+    background-color: #121212; 
+    background-image: radial-gradient(circle at center, #4a0e17 0%, #121212 70%);
+    background-attachment: fixed;
+    color: #e0e0e0;            /* Jasny tekst */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+/* GÓRNE MENU (NAVBAR) */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: #1e1e1e; 
+    border-bottom: 1px solid #2d2d2d;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    z-index: 1000;
+}
+
+.navbar .menu-title, .sub-panel-navbar .menu-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.navbar .nav-links, .sub-panel-navbar .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.navbar .nav-links a, .sub-panel-navbar .nav-links a {
+    color: #a0a0a0;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Aktywna zakładka podświetla się na jasny kolor */
+.navbar .nav-links a.active, .navbar .nav-links a:hover,
+.sub-panel-navbar .nav-links a.active, .sub-panel-navbar .nav-links a:hover {
+    color: #3b82f6; 
+}
+
+/* PODSTAWOWY STYL DLA SEKCJI ZAKŁADEK */
+.tab-content, .sub-tab-content {
+    display: none; /* Domyślnie wszystkie ukryte */
+}
+
+/* Sekcja aktywna staje się widoczna jako Flexbox na środku */
+.tab-content.active, .sub-tab-content.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+    padding: 40px 20px;
+    gap: 24px; 
+}
+
+/* Dopasowanie wysokości dla głównego kontenera */
+#tab-licytacje.active {
+    min-height: auto;
+}
+
+.page-title {
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    white-space: pre-line; 
+}
+
+/* RESPONSYWNE KONTENERY DLA TABEL */
+.table-responsive {
+    width: 100%;
+    max-width: 800px;
+    overflow-x: auto; 
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+
+/* STYLIZACJA TABEL */
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    text-align: left;
+}
+
+th {
+    background-color: #3b82f6; 
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    padding: 16px 20px;
+}
+
+td {
+    padding: 16px 20px;
+    font-size: 15px;
+    border: none; 
+}
+
+/* PIERWSZA TABELA - WYŚRODKOWANIE WPISÓW */
+.table-sellers table {
+    text-align: center;
+}
+
+tbody tr:hover {
+    background-color: #252525;
+    transition: background-color 0.2s ease;
+}
+
+/* Słowo LICYTACJA na środku */
+.row-centered {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 6px; 
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+
+/* PRECYZYJNE SZEROKOŚCI KOLUMN DLA DRUGIEJ TABELI */
+.col-uzytkownik {
+    width: 50%; 
+}
+.col-kwota {
+    width: 30%; 
+}
+.col-nr-akcji {
+    width: 20%; 
+    white-space: nowrap; 
+}
+
+/* STYLIZACJA OSOBNEGO PANELU STEROWANIA */
+.sub-panel-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #161616;
+    border: 1px solid #2d2d2d;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.sub-panel-navbar {
+    background-color: #222222;
+    border-bottom: 1px solid #2d2d2d;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* DOSTOSOWANIE DO EKRANÓW MOBILNYCH */
+@media (max-width: 600px) {
+    .navbar, .sub-panel-navbar {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .navbar .nav-links, .sub-panel-navbar .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

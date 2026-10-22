@@ -1,24 +1,22 @@
-// Obsługa menu głównego (Licytacje, Instrukcja, Logowanie)
+// Obsługa menu głównego (OD 0, OD 1000, Instrukcja, Logowanie)
 function showTab(tabId) {
+    // 1. Ukryj całą zawartość wszystkich zakładek głównych
     const contents = document.querySelectorAll('.tab-content');
     contents.forEach(content => content.classList.remove('active'));
 
+    // 2. Usuń podświetlenie ze wszystkich linków w menu nawigacyjnym
     const links = document.querySelectorAll('.navbar .nav-links a');
     links.forEach(link => link.classList.remove('active'));
 
-    document.getElementById(`tab-${tabId}`).classList.add('active');
-    document.getElementById(`link-${tabId}`).classList.add('active');
+    // 3. Pokaż wybraną sekcję treści
+    const activeContent = document.getElementById(`tab-${tabId}`);
+    if (activeContent) {
+        activeContent.classList.add('active');
+    }
+
+    // 4. Podświetl kliknięty link w menu
+    const activeLink = document.getElementById(`link-${tabId}`);
+    if (activeLink) {
+        activeLink.classList.add('active');
+    }
 }
-
-// Obsługa drugiego panelu zakładek (OD 0, OD 1000)
-function showSubTab(subTabId) {
-    const subContents = document.querySelectorAll('.sub-tab-content');
-    subContents.forEach(content => content.classList.remove('active'));
-
-    const subLinks = document.querySelectorAll('.sub-panel-navbar .nav-links a');
-    subLinks.forEach(link => link.classList.remove('active'));
-
-    document.getElementById(`sub-tab-${subTabId}`).classList.add('active');
-    document.getElementById(`link-${subTabId}`).classList.add('active');
-}
-

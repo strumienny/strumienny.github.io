@@ -6,6 +6,36 @@
     <title>Panel Aukcji</title>
     <!-- Łączymy plik HTML z plikiem stylów CSS -->
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Style dla miniatury profilu w zakładce logowania */
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 30px;
+            background-color: #1e1e1e; /* Ciemne tło panelu profilu */
+            border-radius: 12px;
+            max-width: 400px;
+            margin: 40px auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .profile-avatar {
+            width: 50px;         /* Szerokość miniatury jak w Messengerze */
+            height: 50px;        /* Wysokość miniatury */
+            border-radius: 50%;  /* Idealne zaokrąglenie w koło */
+            object-fit: cover;   /* Dopasowanie przesłanego zdjęcia */
+            border: 2px solid #0084ff; /* Niebieska obwódka w stylu Messengera */
+        }
+
+        .profile-name {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: sans-serif;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,7 +43,6 @@
     <nav class="navbar">
         <div class="menu-title">LICYTACJA AKCJI</div>
         <ul class="nav-links">
-            <!-- Zakładka OD 0 została ustawiona jako domyślna i otwiera główną stronę licytacji -->
             <li><a onclick="showTab('licytacje')" id="link-licytacje" class="active">OD 0</a></li>
             <li><a onclick="showTab('od-1000')" id="link-od-1000">OD 1000</a></li>
             <li><a onclick="showTab('instrukcja')" id="link-instrukcja">Instrukcja</a></li>
@@ -23,17 +52,11 @@
 
     <!-- ZAKŁADKA 1: LICYTACJE (OTWIERANA PRZEZ "OD 0") -->
     <main id="tab-licytacje" class="tab-content active">
-
-        <!-- Nagłówek główny -->
         <h1 class="page-title">KONIEC AUKCJI : -- : --</h1>
-
-        <!-- TABELA 1: LICYTACJA 5 -->
         <div class="table-responsive">
             <table>
                 <thead>
-                    <tr>
-                        <th colspan="3" class="row-centered">LICYTACJA 5</th>
-                    </tr>
+                    <tr><th colspan="3" class="row-centered">LICYTACJA 5</th></tr>
                     <tr>
                         <th class="col-uzytkownik">Użytkownik kupujący</th>
                         <th class="col-kwota">Kwota</th>
@@ -41,31 +64,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Gracz_101</td>
-                        <td>1 200 zł</td>
-                        <td>#A-9942</td>
-                    </tr>
-                    <tr>
-                        <td>Gracz_X</td>
-                        <td>1 150 zł</td>
-                        <td>#A-9941</td>
-                    </tr>
-                    <tr>
-                        <td>Sniper99</td>
-                        <td>950 zł</td>
-                        <td>#A-9938</td>
-                    </tr>
-                    <tr>
-                        <td>MistrzAukcji</td>
-                        <td>800 zł</td>
-                        <td>#A-9935</td>
-                    </tr>
+                    <tr><td>Gracz_101</td><td>1 200 zł</td><td>#A-9942</td></tr>
+                    <tr><td>Gracz_X</td><td>1 150 zł</td><td>#A-9941</td></tr>
+                    <tr><td>Sniper99</td><td>950 zł</td><td>#A-9938</td></tr>
+                    <tr><td>MistrzAukcji</td><td>800 zł</td><td>#A-9935</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- TABELA SPRZEDAJĄCYCH (POMIĘDZY TABELAMI 5 A 4) -->
         <div class="table-responsive table-sellers" style="max-width: 500px;">
             <table>
                 <tbody>
@@ -73,146 +79,36 @@
                         <td style="font-weight: bold;">Użytkownicy Sprzedający</td>
                         <td style="font-weight: bold;">Ilość sztuk</td>
                     </tr>
-                    <tr>
-                        <td>Przykładowy_Sprzedawca_1</td>
-                        <td>5 szt.</td>
-                    </tr>
-                    <tr>
-                        <td>Przykładowy_Sprzedawca_2</td>
-                        <td>10 szt.</td>
-                    </tr>
+                    <tr><td>Przykładowy_Sprzedawca_1</td><td>5 szt.</td></tr>
+                    <tr><td>Przykładowy_Sprzedawca_2</td><td>10 szt.</td></tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- TABELA 2: LICYTACJA 4 -->
         <div class="table-responsive">
             <table>
                 <thead>
-                    <tr>
-                        <th colspan="3" class="row-centered">LICYTACJA 4</th>
-                    </tr>
-                    <tr>
-                        <th class="col-uzytkownik">Użytkownik kupujący</th>
-                        <th class="col-kwota">Kwota</th>
-                        <th class="col-nr-akcji">Nr. Akcji</th>
-                    </tr>
+                    <tr><th colspan="3" class="row-centered">LICYTACJA 4</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Gracz_101</td>
-                        <td>1 200 zł</td>
-                        <td>#A-9942</td>
-                    </tr>
-                    <tr>
-                        <td>Gracz_X</td>
-                        <td>1 150 zł</td>
-                        <td>#A-9941</td>
-                    </tr>
-                    <tr>
-                        <td>Sniper99</td>
-                        <td>950 zł</td>
-                        <td>#A-9938</td>
-                    </tr>
-                    <tr>
-                        <td>MistrzAukcji</td>
-                        <td>800 zł</td>
-                        <td>#A-9935</td>
-                    </tr>
+                    <tr><td>Gracz_101</td><td>1 200 zł</td><td>#A-9942</td></tr>
+                    <tr><td>Gracz_X</td><td>1 150 zł</td><td>#A-9941</td></tr>
                 </tbody>
             </table>
         </div>
-
-        <!-- TABELA 3: LICYTACJA 3 -->
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th colspan="3" class="row-centered">LICYTACJA 3</th>
-                    </tr>
-                    <tr>
-                        <th class="col-uzytkownik">Użytkownik kupujący</th>
-                        <th class="col-kwota">Kwota</th>
-                        <th class="col-nr-akcji">Nr. Akcji</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Gracz_101</td>
-                        <td>1 200 zł</td>
-                        <td>#A-9942</td>
-                    </tr>
-                    <tr>
-                        <td>Gracz_X</td>
-                        <td>1 150 zł</td>
-                        <td>#A-9941</td>
-                    </tr>
-                    <tr>
-                        <td>Sniper99</td>
-                        <td>950 zł</td>
-                        <td>#A-9938</td>
-                    </tr>
-                    <tr>
-                        <td>MistrzAukcji</td>
-                        <td>800 zł</td>
-                        <td>#A-9935</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
     </main>
 
     <!-- ZAKŁADKA 2: OD 1000 -->
     <main id="tab-od-1000" class="tab-content">
-        
-        <!-- Nagłówek dla ofert powyżej 1000 zł -->
         <h1 class="page-title">KONIEC AUKCJI (OD 1000) : -- : --</h1>
-
-        <!-- TABELA LICYTACJI -->
         <div class="table-responsive">
             <table>
                 <thead>
-                    <tr>
-                        <th colspan="3" class="row-centered">LICYTACJA PREMIUM</th>
-                    </tr>
-                    <tr>
-                        <th class="col-uzytkownik">Użytkownik kupujący</th>
-                        <th class="col-kwota">Kwota</th>
-                        <th class="col-nr-akcji">Nr. Akcji</th>
-                    </tr>
+                    <tr><th colspan="3" class="row-centered">LICYTACJA PREMIUM</th></tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Gracz_101</td>
-                        <td>1 200 zł</td>
-                        <td>#A-9942</td>
-                    </tr>
-                    <tr>
-                        <td>Gracz_X</td>
-                        <td>1 150 zł</td>
-                        <td>#A-9941</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- TABELA SPRZEDAJĄCYCH -->
-        <div class="table-responsive table-sellers" style="max-width: 500px; margin-top: 20px;">
-            <table>
-                <tbody>
-                    <tr>
-                        <td style="font-weight: bold;">Użytkownicy Sprzedający</td>
-                        <td style="font-weight: bold;">Ilość sztuk</td>
-                    </tr>
-                    <tr>
-                        <td>Przykładowy_Sprzedawca_1</td>
-                        <td>5 szt.</td>
-                    </tr>
-                    <tr>
-                        <td>Przykładowy_Sprzedawca_2</td>
-                        <td>10 szt.</td>
-                    </tr>
+                    <tr><td>Gracz_101</td><td>1 200 zł</td><td>#A-9942</td></tr>
+                    <tr><td>Gracz_X</td><td>1 150 zł</td><td>#A-9941</td></tr>
                 </tbody>
             </table>
         </div>
@@ -221,21 +117,22 @@
     <!-- ZAKŁADKA 3: INSTRUKCJA -->
     <main id="tab-instrukcja" class="tab-content">
         <h1 class="page-title">JAK LICYTOWAĆ</h1>
-        
         <div style="max-width: 600px; margin: 0 auto; color: #ffffff; line-height: 1.6; padding: 20px;">
             <p>Aby wziąć udział w aukcji i skutecznie licytować akcje, postępuj zgodnie z poniższymi krokami:</p>
             <ul style="list-style-type: decimal; padding-left: 20px;">
                 <li style="margin-bottom: 10px;"><strong>Zaloguj się</strong> na swoje konto, korzystając z zakładki "Logowanie".</li>
                 <li style="margin-bottom: 10px;">Wybierz interesujący Cię panel licytacji (<strong>OD 0</strong> lub <strong>OD 1000</strong>).</li>
-                <li style="margin-bottom: 10px;">Wprowadź swoją ofertę kwotową – pamiętaj, że każda nowa oferta musi być wyższa od poprzedniej.</li>
-                <li style="margin-bottom: 10px;">Kontroluj <strong>czas pozostały do końca aukcji</strong> widoczny na górze ekranu.</li>
             </ul>
         </div>
     </main>
 
     <!-- ZAKŁADKA 4: LOGOWANIE -->
     <main id="tab-logowanie" class="tab-content">
-        <p style="text-align: center; color: #a0a0a0; padding: 20px; font-size: 18px;">Panel logowania użytkownika.</p>
+        <!-- Kontener profilu z miniaturą i nazwą użytkownika -->
+        <div class="profile-container">
+            <img src="image_MOAq-v.png" alt="Avatar Piotr Kowalski" class="profile-avatar">
+            <div class="profile-name">Piotr Kowalski</div>
+        </div>
     </main>
 
     <!-- SCRIPT DO OBSŁUGI ZAKŁADEK -->

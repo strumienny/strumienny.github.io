@@ -175,29 +175,31 @@
     <nav class="navbar">
         <div class="menu-title">LICYTACJA AKCJI</div>
         <ul class="nav-links">
-            <!-- ZMIANA: Licytacje są teraz jako pierwsze, a Instrukcja jako druga -->
             <li><a onclick="showTab('licytacje')" id="link-licytacje" class="active">Licytacje</a></li>
             <li><a onclick="showTab('instrukcja')" id="link-instrukcja">Instrukcja</a></li>
             <li><a onclick="showTab('logowanie')" id="link-logowanie">Logowanie</a></li>
         </ul>
     </nav>
 
-    <!-- ZAKŁADKA 1: LICYTACJE (TUTAJ SĄ TABELE - DOMYŚLNIE AKTYWNA) -->
+    <!-- ZAKŁADKA 1: LICYTACJE -->
     <main id="tab-licytacje" class="tab-content active">
         
-        <!-- Pierwsza tabela -->
-        <div class="table-responsive table-sellers" style="max-width: 500px;">
+        <!-- Pierwsza tabela ze zmianami -->
+        <div class="table-responsive table-sellers" style="max-width: 550px;">
             <table>
                 <tbody>
                     <tr>
-                        <td style="font-weight: bold;">Użytkownicy Sprzedający</td>
-                        <td style="font-weight: bold;">Ilość sztuk</td>
+                        <td style="font-weight: bold; width: 15%;">NR</td>
+                        <td style="font-weight: bold; width: 55%;">Użytkownicy Sprzedający</td>
+                        <td style="font-weight: bold; width: 30%;">Ilość sztuk</td>
                     </tr>
                     <tr>
+                        <td>1</td>
                         <td>Przykładowy_Sprzedawca_1</td>
                         <td>5 szt.</td>
                     </tr>
                     <tr>
+                        <td>2</td>
                         <td>Przykładowy_Sprzedawca_2</td>
                         <td>10 szt.</td>
                     </tr>
@@ -206,8 +208,7 @@
         </div>
 
         <!-- Nagłówek główny -->
-        <h1 class="page-title">KONIEC AUKCJI :
--- : --</h1>
+        <h1 class="page-title">KONIEC AUKCJI :<br>-- : --</h1>
 
         <!-- GŁÓWNA TABELA -->
         <div class="table-responsive">
@@ -251,32 +252,26 @@
 
     <!-- ZAKŁADKA 2: INSTRUKCJA (CZYSTA STRONA) -->
     <main id="tab-instrukcja" class="tab-content">
-        <!-- Czysta strona -->
+        <h1 class="page-title">Instrukcja</h1>
     </main>
 
     <!-- ZAKŁADKA 3: LOGOWANIE (CZYSTA STRONA) -->
     <main id="tab-logowanie" class="tab-content">
-        <!-- Czysta strona -->
+        <h1 class="page-title">Logowanie</h1>
     </main>
 
     <!-- SKRYPT DO OBSŁUGI PRZEŁĄCZANIA ZAKŁADEK -->
     <script>
         function showTab(tabId) {
-            // 1. Ukryj całą zawartość wszystkich zakładek
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // 2. Usuń podświetlenie (klasę active) ze wszystkich linków w menu
             const links = document.querySelectorAll('.nav-links a');
             links.forEach(link => link.classList.remove('active'));
 
-            // 3. Pokaż wybraną zakładkę
             document.getElementById('tab-' + tabId).classList.add('active');
-
-            // 4. Podświetl kliknięty element menu
             document.getElementById('link-' + tabId).classList.add('active');
         }
     </script>
-
 </body>
 </html>

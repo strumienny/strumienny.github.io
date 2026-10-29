@@ -25,8 +25,7 @@
     <main id="tab-licytacje" class="tab-content active">
 
         <!-- Nagłówek główny -->
-        <h1 class="page-title">KONIEC AUKCJI :
--- : --</h1>
+        <h1 class="page-title">KONIEC AUKCJI : -- : --</h1>
 
         <!-- TABELA 1: LICYTACJA 5 -->
         <div class="table-responsive">
@@ -166,38 +165,16 @@
 
     <!-- ZAKŁADKA 2: OD 1000 -->
     <main id="tab-od-1000" class="tab-content">
-        <p style="text-align: center; color: #a0a0a0; padding: 20px; font-size: 18px;">Tutaj pojawi się zawartość dla ofert powyżej 1000 zł.</p>
-    </main>
+        
+        <!-- Nagłówek dla ofert powyżej 1000 zł -->
+        <h1 class="page-title">KONIEC AUKCJI (OD 1000) : -- : --</h1>
 
-    <!-- ZAKŁADKA 3: INSTRUKCJA -->
-    <main id="tab-instrukcja" class="tab-content">
-        <div class="table-responsive table-sellers" style="max-width: 500px;">
-            <table>
-                <tbody>
-                    <tr>
-                        <td style="font-weight: bold;">Użytkownicy Sprzedający</td>
-                        <td style="font-weight: bold;">Ilość sztuk</td>
-                    </tr>
-                    <tr>
-                        <td>Przykładowy_Sprzedawca_1</td>
-                        <td>5 szt.</td>
-                    </tr>
-                    <tr>
-                        <td>Przykładowy_Sprzedawca_2</td>
-                        <td>10 szt.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <h1 class="page-title">KONIEC AUKCJI :
--- : --</h1>
-        
+        <!-- TABELA LICYTACJI -->
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
-                        <th colspan="3" class="row-centered">LICYTACJA</th>
+                        <th colspan="3" class="row-centered">LICYTACJA PREMIUM</th>
                     </tr>
                     <tr>
                         <th class="col-uzytkownik">Użytkownik kupujący</th>
@@ -216,27 +193,67 @@
                         <td>1 150 zł</td>
                         <td>#A-9941</td>
                     </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TABELA SPRZEDAJĄCYCH -->
+        <div class="table-responsive table-sellers" style="max-width: 500px; margin-top: 20px;">
+            <table>
+                <tbody>
                     <tr>
-                        <td>Sniper99</td>
-                        <td>950 zł</td>
-                        <td>#A-9938</td>
+                        <td style="font-weight: bold;">Użytkownicy Sprzedający</td>
+                        <td style="font-weight: bold;">Ilość sztuk</td>
                     </tr>
                     <tr>
-                        <td>MistrzAukcji</td>
-                        <td>800 zł</td>
-                        <td>#A-9935</td>
+                        <td>Przykładowy_Sprzedawca_1</td>
+                        <td>5 szt.</td>
+                    </tr>
+                    <tr>
+                        <td>Przykładowy_Sprzedawca_2</td>
+                        <td>10 szt.</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </main>
 
-    <!-- ZAKŁADKA 4: LOGOWANIE -->
-    <main id="tab-logowanie" class="tab-content">
-        <!-- Tutaj w przyszłości znajdzie się formularz logowania -->
+    <!-- ZAKŁADKA 3: INSTRUKCJA -->
+    <main id="tab-instrukcja" class="tab-content">
+        <h1 class="page-title">JAK LICYTOWAĆ</h1>
+        
+        <div style="max-width: 600px; margin: 0 auto; color: #ffffff; line-height: 1.6; padding: 20px;">
+            <p>Aby wziąć udział w aukcji i skutecznie licytować akcje, postępuj zgodnie z poniższymi krokami:</p>
+            <ul style="list-style-type: decimal; padding-left: 20px;">
+                <li style="margin-bottom: 10px;"><strong>Zaloguj się</strong> na swoje konto, korzystając z zakładki "Logowanie".</li>
+                <li style="margin-bottom: 10px;">Wybierz interesujący Cię panel licytacji (<strong>OD 0</strong> lub <strong>OD 1000</strong>).</li>
+                <li style="margin-bottom: 10px;">Wprowadź swoją ofertę kwotową – pamiętaj, że każda nowa oferta musi być wyższa od poprzedniej.</li>
+                <li style="margin-bottom: 10px;">Kontroluj <strong>czas pozostały do końca aukcji</strong> widoczny na górze ekranu.</li>
+            </ul>
+        </div>
     </main>
 
-    <!-- Łączymy plik HTML z logiką JavaScript -->
-    <script src="script.js"></script>
+    <!-- ZAKŁADKA 4: LOGOWANIE -->
+    <main id="tab-logowanie" class="tab-content">
+        <p style="text-align: center; color: #a0a0a0; padding: 20px; font-size: 18px;">Panel logowania użytkownika.</p>
+    </main>
+
+    <!-- SCRIPT DO OBSŁUGI ZAKŁADEK -->
+    <script>
+        function showTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => link.classList.remove('active'));
+
+            const activeTab = document.getElementById('tab-' + tabId);
+            if (activeTab) activeTab.classList.add('active');
+
+            const activeLink = document.getElementById('link-' + tabId);
+            if (activeLink) activeLink.classList.add('active');
+        }
+    </script>
+
 </body>
 </html>
